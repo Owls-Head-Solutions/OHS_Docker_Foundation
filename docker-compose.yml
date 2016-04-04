@@ -1,0 +1,32 @@
+memcached:
+     image: memcached:1.4
+     ports:
+     - "11211"
+mysqldata:
+    image: busybox
+    volumes:
+          - "./mysql_data:/var/lib/mysql"
+mysql:
+     image: mysql:5.5
+     volumes_from:
+          - mysqldata
+     ports:
+          - "3306"
+     environment:
+          - MYSQL_ROOT_PASSWORD=password
+php:
+     image: ohsdev/wp_docker_foundation:latest
+     volumes:
+          - "./html:/var/www/html:ro"
+     links:
+          - memcached
+          - mysql
+nginx:
+     image: nginx:latest
+     volumes:
+                - "./html:/var/www/html:ro"
+                - "./nginxconf:/etc/nginx:ro"
+     links:
+          - php
+     ports:
+          - "80:80"
