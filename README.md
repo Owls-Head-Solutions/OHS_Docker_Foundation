@@ -24,6 +24,8 @@ Guides:
 https://docs.docker.com/windows/
 https://docs.docker.com/mac/
 
+
+First time setup:
 1.) Download and install the docker toolbox from here:
 https://www.docker.com/products/docker-toolbox
 
@@ -33,13 +35,59 @@ This will install:
 • Oracle VM VirtualBox
 • Git MSYS-git UNIX tools
 
-
 2.) Download WP_Docker_Foundation from GitHub (don't clone) and drop it into the directory that you wish to work from.
+Preferrably this is a directory that is a git repo for a new project.
 
-3.) Launch the Docker quickstart terminal and browse to the new project location where the docker-compose.yaml file exists (the root of the project)
+3.) Launch the Kitematic. Kitematic will automatically generate a new virtual machine by the name of "default"
 
-4.) From the quickstart terminal run "docker compose up". Containers should be launched.
+***************************On a Mac do the following:************************************
 
-5.) Launch KiteMatic to see the active containers. Click on the NGINX container to see a preview of the web page. Launch the web page from here
+4.) Once Kitematic is finished launching and a new VM is created, launch the Docker Quickstart Terminal
 
-6.) Note: "chmod -R 777 mysql_data" on mac if there are file access issues for the db
+5.) From the terminal, browse to the directory that contains the WP_Docker_Foundation files. Browse into the "scripts" directory
+
+6.) Run the script "docker-machine-nfs.sh" with the following command:
+
+./docker-machine-nfs.sh default
+
+At one point you'll be asked to input your administrator password, it is safe to do so. The reason it asks is so that
+the file /etc/exports may be modified to share your /Users directory out as an NFS folder on the 192.168.99.0 subnet.
+Keep this in mind as this is a security concern.
+
+If you are concerned about this, you can enable / disable NFS on your mac as desired:
+
+Command line controls of NFS (Network File System)
+"sudo nfsd disable" to permanently turn off nfs
+"sudo nfsd stop" to temporarily stop nfs
+"sudo nfsd enable" to permanently turn on nfs
+"sudo nfsd start" to turn nfs back on after it has been stopped
+
+This script should have configured the docker-machine virtual machine to mount the /Users directory on your Mac as a
+network attached directory to the docker-machine virtual machine. You should have no need to ever run the docker-machine-nfs.sh script
+again.
+
+Should you need to log into the docker-machine virtual machine you can do so from "docker-machine ssh" in the quickstart terminal
+
+7.) now, from the quickstart terminal, leave the scripts directory so that you are in the root of the WP_Docker_Foundation project. Run
+"docker-compose up" to create all fo the necessary docker containers for development
+
+8.) The setup is complete.
+
+*******************************************On a PC do the following:*********************************************
+
+4.) browse to the new project location where the docker-compose.yaml file exists (the root of the project)
+
+5.) From the quickstart terminal run "docker compose up". Containers should be launched.
+
+6.) Launch KiteMatic to see the active containers. Click on the NGINX container to see a preview of the web page. Launch the web page from there
+
+
+
+
+***************************Every Time Setup*********************************************************
+
+When you wish to work on a WP Docker Foundation project, simply launch kitematic and the docker quickstart terminal.
+Use Kitematic to see your various containers and their active states. From the quickstart terminal run docker-compose-up
+to bring the containers to life when you are ready. Use ctrl+c to kill the containers.
+
+
