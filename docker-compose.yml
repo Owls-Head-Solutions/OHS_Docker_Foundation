@@ -17,7 +17,7 @@ mysql:
 php:
      image: ohsdev/wp_docker_foundation:latest
      volumes:
-          - "./html:/var/www/html:ro"
+          - "./html:/var/www/html"
      links:
           - memcached
           - mysql
