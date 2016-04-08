@@ -1,4 +1,6 @@
- # WP_Docker_Foundation
+WP_Docker_Foundation
+Owl's Head Solutions
+https://www.owlsheadsolutions.com
 Quickstart Docker Environment for WP
 
 
