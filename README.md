@@ -35,7 +35,8 @@ This will install:
 • Oracle VM VirtualBox
 • Git MSYS-git UNIX tools
 
-2.) Download WP_Docker_Foundation from GitHub (don't clone) and drop it into the directory that you wish to work from.
+2.) Download WP_Docker_Foundation from GitHub (don't clone) and drop it into the directory that you wish to work from. This directory
+MUST be within your user directory on Windows and Mac. Docker cannot access folders outside of your user's directory.
 Preferrably this is a directory that is a git repo for a new project.
 
 3.) Launch the Kitematic. Kitematic will automatically generate a new virtual machine by the name of "default"

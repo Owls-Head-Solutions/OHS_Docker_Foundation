@@ -30,3 +30,12 @@ nginx:
           - php
      ports:
           - "80:80"
+
+phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: myadmin
+    links:
+        - mysql:db
+    restart: always
+    ports:
+     - "8080:80"
