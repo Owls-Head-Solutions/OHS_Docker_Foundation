@@ -320,7 +320,7 @@ configureNFS()
   do
     # Update the /etc/exports file and restart nfsd
     (
-      echo '\n'$shared_folder' 'maproot=root -network 192.168.99.100 -mask 255.255.255.0'\n' |
+      echo '\n'$shared_folder' '-maproot=root -network 192.168.99.100 -mask 255.255.255.0'\n' |
         sudo tee -a /etc/exports && awk '!a[$0]++' /etc/exports |
         sudo tee /etc/exports
     ) > /dev/null
