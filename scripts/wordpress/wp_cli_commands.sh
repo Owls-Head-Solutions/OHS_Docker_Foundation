@@ -9,12 +9,11 @@ WP_TITLE="WPFoundation"
 WP_USER="admin"
 WP_USER_PASS="admin"
 WP_USER_EMAIL="admin@admin.com"
-WP_IP="192.168.56.100"
+WP_IP="192.168.99.100"
 
 wp core download --allow-root
-wp core config --allow-root --path='/var/www/html' --dbhost="mysql" --dbname=${DB_NAME} --dbuser=${DB_USER_NAME} --dbpass=${DB_PASS}
+wp core config --allow-root --path='/var/www/html' --dbhost="mysql" --dbname=${DB_NAME} --dbuser=${DB_USER_NAME} --dbpass=${DB_PASS} --skip-check
 wp core install --allow-root --url=http://${WP_IP} --title=${WP_TITLE} --admin_user=${WP_USER} --admin_password=${WP_USER_PASS} --admin_email=${WP_USER_EMAIL}
-rm index.html
 
 wp plugin delete --allow-root akismet hello
 wp plugin install --allow-root advanced-custom-fields --activate

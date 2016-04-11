@@ -13,7 +13,10 @@ mysql:
      ports:
           - "3306"
      environment:
-          - MYSQL_ROOT_PASSWORD=password
+          MYSQL_ROOT_PASSWORD: password
+          MYSQL_DATABASE: WP_Foundation
+          MYSQL_USER: WP_User
+          MYSQL_PASSWORD: OHSWPFoundationPW
 php:
      image: ohsdev/wp_docker_foundation:latest
      volumes:
@@ -28,12 +31,12 @@ nginx:
                 - "./nginxconf:/etc/nginx:ro"
      links:
           - php
+          - mysql:db
      ports:
           - "80:80"
 
 phpmyadmin:
     image: phpmyadmin/phpmyadmin
-    container_name: myadmin
     links:
         - mysql:db
     restart: always
