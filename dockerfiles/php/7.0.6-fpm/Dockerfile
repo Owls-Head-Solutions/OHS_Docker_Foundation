@@ -1,4 +1,4 @@
-FROM php:5.6-fpm
+FROM php:7.0.6-fpm
 
 # required libs for extensions
 RUN apt-get update && apt-get install -y \
@@ -9,6 +9,9 @@ RUN apt-get update && apt-get install -y \
 # memcached extension
 RUN echo '' | pecl install memcached
 RUN echo "extension=memcached.so" > /usr/local/etc/php/conf.d/ext-memcached.ini
+
+RUN echo '' | pecl install oauth
+RUN echo "extension=oauth.so" > /usr/local/etc/php/conf.d/ext-oauth.ini
 
 # xdebug extension
 RUN pecl install xdebug
