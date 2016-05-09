@@ -6,10 +6,6 @@ RUN apt-get update && apt-get install -y \
         zlib1g-dev libpng12-dev less \
     && rm -rf /var/lib/apt/lists/*
 
-# memcached extension
-RUN echo '' | pecl install memcached
-RUN echo "extension=memcached.so" > /usr/local/etc/php/conf.d/ext-memcached.ini
-
 RUN echo '' | pecl install oauth
 RUN echo "extension=oauth.so" > /usr/local/etc/php/conf.d/ext-oauth.ini
 
