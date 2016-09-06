@@ -69,6 +69,8 @@ This script should have configured the docker-machine virtual machine to mount t
 network attached directory to the docker-machine virtual machine. You should have no need to ever run the docker-machine-nfs.sh script
 again.
 
+**NOTE: You may need to configure Oracle Virtual Box to disable the share that it uses as this may conflict with the new NFS share
+
 Should you need to log into the docker-machine virtual machine you can do so from "docker-machine ssh" in the quickstart terminal
 
 7.) now, from the quickstart terminal, leave the scripts directory so that you are in the root of the WP_Docker_Foundation project. Run
