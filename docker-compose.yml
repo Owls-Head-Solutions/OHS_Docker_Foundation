@@ -1,11 +1,8 @@
-memcached:
-     image: memcached:1.4
-     ports:
-     - "11211"
 mysqldata:
     image: busybox
     volumes:
           - "./mysql_data:/var/lib/mysql"
+
 mysql:
      image: mysql:5.5
      volumes_from:
@@ -14,26 +11,20 @@ mysql:
           - "3306"
      environment:
           MYSQL_ROOT_PASSWORD: password
-          MYSQL_DATABASE: WP_Foundation
-          MYSQL_USER: WP_User
-          MYSQL_PASSWORD: OHSWPFoundationPW
-php:
-     image: ohsdev/wp_docker_foundation:5.6-fpm
+          #MYSQL_DATABASE: WP_Foundation
+          #MYSQL_USER: WP_User
+          #MYSQL_PASSWORD: OHSWPFoundationPW
+
+apache_server:
+     build: ./
      volumes:
-          - "./html:/var/www/html"
+          - "./app:/var/www/html:ro"
      links:
-          - memcached
-          - mysql
-nginx:
-     image: nginx:latest
-     volumes:
-                - "./html:/var/www/html:ro"
-                - "./nginxconf:/etc/nginx:ro"
-     links:
-          - php
           - mysql:db
      ports:
           - "80:80"
+     environment:
+           - HOSTIP=10.0.75.1
 
 phpmyadmin:
     image: phpmyadmin/phpmyadmin
