@@ -18,7 +18,7 @@ mysql:
           MYSQL_USER: WP_User
           MYSQL_PASSWORD: OHSWPFoundationPW
 php:
-     image: ohsdev/wp_docker_foundation:latest
+     image: ohsdev/wp_docker_foundation:5.6-fpm
      volumes:
           - "./html:/var/www/html"
      links:

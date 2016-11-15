@@ -76,7 +76,10 @@ Should you need to log into the docker-machine virtual machine you can do so fro
 7.) now, from the quickstart terminal, leave the scripts directory so that you are in the root of the WP_Docker_Foundation project. Run
 "docker-compose up" to create all fo the necessary docker containers for development
 
-8.) The setup is complete.
+8.) To install a skeleton WordPress environment, browse to the /scripts/wordpress directory with the docker quickstart terminal. From the
+terminal run ./install.sh and WordPress will install automatically.
+
+9.) The setup is complete. Launch KiteMatic to see the active containers. Click on the NGINX container to see a preview of the web page. Launch the web page from there.
 
 *******************************************On a PC do the following:*********************************************
 
@@ -84,15 +87,15 @@ Should you need to log into the docker-machine virtual machine you can do so fro
 
 5.) From the quickstart terminal run "docker compose up". Containers should be launched.
 
-6.) Launch KiteMatic to see the active containers. Click on the NGINX container to see a preview of the web page. Launch the web page from there
+6.) To install a skeleton WordPress environment, browse to the /scripts/wordpress directory with the docker quickstart terminal. From the
+    terminal run ./install.sh and WordPress will install automatically.
 
-
-
+7.) The setup is complete. Launch KiteMatic to see the active containers. Click on the NGINX container to see a preview of the web page. Launch the web page from there.
 
 ***************************Every Time Setup*********************************************************
 
 When you wish to work on a WP Docker Foundation project, simply launch kitematic and the docker quickstart terminal.
-Use Kitematic to see your various containers and their active states. From the quickstart terminal run docker-compose-up
-to bring the containers to life when you are ready. Use ctrl+c to kill the containers.
+From the quickstart terminal run docker-compose-up to bring the containers to life when you are ready. Use ctrl+c to kill the containers.
+Use Kitematic to see your various containers and their active states.
 
 

@@ -1,4 +1,4 @@
-FROM php:5.6-fpm
+FROM php:7.0.6-fpm
 
 # required libs for extensions
 RUN apt-get update && apt-get install -y \
@@ -6,13 +6,16 @@ RUN apt-get update && apt-get install -y \
         zlib1g-dev libpng12-dev less \
     && rm -rf /var/lib/apt/lists/*
 
-# memcached extension
-RUN echo '' | pecl install memcached
-RUN echo "extension=memcached.so" > /usr/local/etc/php/conf.d/ext-memcached.ini
+RUN echo '' | pecl install oauth
+RUN echo "extension=oauth.so" > /usr/local/etc/php/conf.d/ext-oauth.ini
 
 # xdebug extension
 RUN pecl install xdebug
 COPY ext-xdebug.ini /usr/local/etc/php/conf.d/ext-xdebug.ini
+
+RUN apt-get update && \
+    apt-get install -y \
+        libmcrypt-dev
 
 RUN docker-php-ext-install mbstring \
     && docker-php-ext-install gd \
@@ -20,6 +23,7 @@ RUN docker-php-ext-install mbstring \
     && docker-php-ext-install gettext \
     && docker-php-ext-install mysqli \
     && docker-php-ext-install opcache \
+    && docker-php-ext-install mcrypt \
     && docker-php-ext-install pdo_mysql
 
 # WP CLI
