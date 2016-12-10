@@ -18,7 +18,7 @@ mysql:
 apache_server:
      build: ./
      volumes:
-          - "./app:/var/www/html:ro"
+          - "./app:/var/www:ro"
      links:
           - mysql:db
      ports:
