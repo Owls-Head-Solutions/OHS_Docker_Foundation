@@ -11,9 +11,9 @@ mysql:
           - "3306"
      environment:
           MYSQL_ROOT_PASSWORD: password
-          #MYSQL_DATABASE: WP_Foundation
-          #MYSQL_USER: WP_User
-          #MYSQL_PASSWORD: OHSWPFoundationPW
+          MYSQL_DATABASE: OHS_Foundation
+          MYSQL_USER: OHS_User
+          MYSQL_PASSWORD: OHSFoundationPW
 
 apache_server:
      build: ./
